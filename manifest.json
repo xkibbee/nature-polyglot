@@ -2,12 +2,12 @@
   "name": "Nature Polyglot",
   "short_name": "NaturePolyglot",
   "description": "Find plant and animal names in Latin, Italian, English, and French",
-  "start_url": "./index.html",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#f5f8f2",
   "theme_color": "#2d5016",
   "orientation": "portrait",
-  "scope": "./",
+  "scope": ".",
   "icons": [
     {
       "src": "icons/icon-192.png",
