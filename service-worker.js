@@ -1,14 +1,14 @@
 // Nature Polyglot Service Worker
 const CACHE_NAME = 'nature-polyglot-v1';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/styles.css',
-    '/app.js',
-    '/gemini-api.js',
-    '/manifest.json',
-    '/icons/icon-192.png',
-    '/icons/icon-512.png'
+    './',
+    './index.html',
+    './styles.css',
+    './app.js',
+    './gemini-api.js',
+    './manifest.json',
+    './icons/icon-192.png',
+    './icons/icon-512.png'
 ];
 
 // Install event - cache resources
@@ -18,6 +18,9 @@ self.addEventListener('install', event => {
             .then(cache => {
                 console.log('Opened cache');
                 return cache.addAll(urlsToCache);
+            })
+            .catch(error => {
+                console.log('Cache install failed:', error);
             })
     );
     self.skipWaiting();
