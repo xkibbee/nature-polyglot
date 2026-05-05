@@ -1,0 +1,60 @@
+🌿 NATURE POLYGLOT - QUICK START 🦜
+
+═══════════════════════════════════════════════════════════
+
+STEP 1: Get Free API Key (2 minutes)
+────────────────────────────────────────
+1. Visit: https://ai.google.dev/
+2. Click "Get API Key"
+3. Sign in with Google
+4. Copy your API key
+
+STEP 2: Open the App
+────────────────────────────────────────
+1. Double-click "index.html"
+2. Paste your API key
+3. Click "Save & Continue"
+4. Start searching! 🎉
+
+STEP 3: Install on Mobile (Optional)
+────────────────────────────────────────
+iPhone:
+  Safari → Share → Add to Home Screen
+
+Android:
+  Chrome → Menu (⋮) → Add to Home screen
+
+═══════════════════════════════════════════════════════════
+
+HOW TO USE:
+
+1. Enter any plant/animal name in ONE box
+2. Click "Search" 🔍
+3. Get names in all 4 languages!
+
+Examples to try:
+  - "Robin" (English)
+  - "Margherita" (Italian)
+  - "Felis catus" (Latin)
+
+═══════════════════════════════════════════════════════════
+
+FEATURES:
+
+✓ 4 languages: Latin, Italian, English, French
+✓ AI-powered identification
+✓ Works on mobile & desktop
+✓ Install as home screen app
+✓ Search history
+✓ 1,500 free searches per day
+
+═══════════════════════════════════════════════════════════
+
+NEED HELP?
+
+Read: README.md (detailed info)
+Read: SETUP-GUIDE.md (step-by-step guide)
+
+═══════════════════════════════════════════════════════════
+
+Made with 🌿 for nature lovers worldwide!

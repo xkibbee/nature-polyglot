@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2d5016">
+    <meta name="description" content="Find plant and animal names in Latin, Italian, English, and French">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Nature Polyglot</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌿 Nature Polyglot 🦜</h1>
+            <p class="subtitle">Discover species names across languages</p>
+        </header>
+
+        <main>
+            <!-- API Key Setup (shown on first use) -->
+            <div id="api-setup" class="api-setup hidden">
+                <div class="setup-card">
+                    <h2>⚙️ Setup Required</h2>
+                    <p>Enter your Google Gemini API key to get started.</p>
+                    <p class="hint">Don't have one? <a href="https://ai.google.dev/" target="_blank">Get it free here</a> (1,500 requests/day)</p>
+                    <input type="password" id="api-key-input" placeholder="Enter your API key" />
+                    <button id="save-api-key" class="btn btn-primary">Save & Continue</button>
+                </div>
+            </div>
+
+            <!-- Main App Interface -->
+            <div id="app-interface" class="app-interface hidden">
+                <form id="translation-form">
+                    <div class="input-group">
+                        <label for="latin-input">
+                            <span class="flag">🔬</span>
+                            <span class="lang-name">Latin (Scientific)</span>
+                        </label>
+                        <input type="text" id="latin-input" class="name-input" placeholder="e.g., Passer domesticus" autocomplete="off">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="italian-input">
+                            <span class="flag">🇮🇹</span>
+                            <span class="lang-name">Italian (Italiano)</span>
+                        </label>
+                        <input type="text" id="italian-input" class="name-input" placeholder="es. Passera oltremontana" autocomplete="off">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="english-input">
+                            <span class="flag">🇬🇧</span>
+                            <span class="lang-name">English</span>
+                        </label>
+                        <input type="text" id="english-input" class="name-input" placeholder="e.g., House Sparrow" autocomplete="off">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="french-input">
+                            <span class="flag">🇫🇷</span>
+                            <span class="lang-name">French (Français)</span>
+                        </label>
+                        <input type="text" id="french-input" class="name-input" placeholder="par ex. Moineau domestique" autocomplete="off">
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" id="search-btn" class="btn btn-primary">
+                            <span class="btn-icon">🔍</span> Search
+                        </button>
+                        <button type="button" id="reset-btn" class="btn btn-secondary">
+                            <span class="btn-icon">🔄</span> Reset
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Loading Indicator -->
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Searching across languages...</p>
+                </div>
+
+                <!-- Error Message -->
+                <div id="error-message" class="error-message hidden"></div>
+
+                <!-- History Section -->
+                <div id="history-section" class="history-section hidden">
+                    <h3>Recent Searches</h3>
+                    <div id="history-list" class="history-list"></div>
+                    <button id="clear-history" class="btn btn-small">Clear History</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <button id="settings-btn" class="settings-btn" title="Settings">⚙️</button>
+            <p class="footer-text">Powered by Google Gemini AI</p>
+        </footer>
+
+        <!-- Settings Modal -->
+        <div id="settings-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>⚙️ Settings</h2>
+                <div class="setting-item">
+                    <label for="new-api-key">Google Gemini API Key</label>
+                    <input type="password" id="new-api-key" placeholder="Enter new API key">
+                    <button id="update-api-key" class="btn btn-primary">Update Key</button>
+                </div>
+                <button id="close-modal" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="gemini-api.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Register service worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(reg => console.log('Service Worker registered'))
+                    .catch(err => console.log('Service Worker registration failed:', err));
+            });
+        }
+    </script>
+</body>
+</html>

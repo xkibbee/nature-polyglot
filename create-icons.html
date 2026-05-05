@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Icons - Nature Polyglot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            text-align: center;
+            background: #f5f8f2;
+        }
+        canvas {
+            border: 2px solid #2d5016;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #2d5016;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background: #1a3009;
+        }
+        .info {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌿 Nature Polyglot Icon Generator</h1>
+    <div class="info">
+        <p>Click the buttons below to generate and download app icons.</p>
+        <p>These will be used for the PWA home screen installation.</p>
+    </div>
+    
+    <canvas id="canvas192" width="192" height="192"></canvas>
+    <canvas id="canvas512" width="512" height="512"></canvas>
+    
+    <div>
+        <button onclick="generateIcons()">Generate Icons</button>
+        <button onclick="downloadIcon(192)">Download 192x192</button>
+        <button onclick="downloadIcon(512)">Download 512x512</button>
+    </div>
+
+    <script>
+        function generateIcons() {
+            generateIcon(192);
+            generateIcon(512);
+            alert('Icons generated! Click the download buttons to save them.');
+        }
+
+        function generateIcon(size) {
+            const canvas = document.getElementById(`canvas${size}`);
+            const ctx = canvas.getContext('2d');
+            
+            // Background - gradient green
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#4a7c2c');
+            gradient.addColorStop(1, '#2d5016');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Draw leaf icon
+            const scale = size / 192;
+            ctx.save();
+            ctx.translate(size / 2, size / 2);
+            ctx.scale(scale, scale);
+            
+            // Leaf shape
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.moveTo(0, -60);
+            ctx.bezierCurveTo(40, -60, 60, -40, 60, 0);
+            ctx.bezierCurveTo(60, 40, 40, 60, 0, 60);
+            ctx.bezierCurveTo(-40, 60, -60, 40, -60, 0);
+            ctx.bezierCurveTo(-60, -40, -40, -60, 0, -60);
+            ctx.fill();
+            
+            // Leaf vein
+            ctx.strokeStyle = '#2d5016';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(0, -50);
+            ctx.lineTo(0, 50);
+            ctx.stroke();
+            
+            // Side veins
+            for (let i = -30; i <= 30; i += 15) {
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(20, i + 10);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(-20, i + 10);
+                ctx.stroke();
+            }
+            
+            ctx.restore();
+            
+            // Add letter "N" in bottom right
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.font = `bold ${size * 0.25}px Arial`;
+            ctx.textAlign = 'right';
+            ctx.textBaseline = 'bottom';
+            ctx.fillText('N', size - 20 * scale, size - 20 * scale);
+        }
+
+        function downloadIcon(size) {
+            const canvas = document.getElementById(`canvas${size}`);
+            const link = document.createElement('a');
+            link.download = `icon-${size}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Generate on load
+        window.onload = generateIcons;
+    </script>
+</body>
+</html>
