@@ -3,8 +3,8 @@
 class GeminiAPI {
     constructor() {
         this.apiKey = null;
-        // Using gemini-3.1-flash-lite model (latest lightweight version)
-        this.apiEndpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent';
+        // Using gemini-3.1-flash-lite-preview model (latest lightweight version)
+        this.apiEndpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent';
     }
 
     // Set API key
