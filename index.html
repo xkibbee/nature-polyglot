@@ -103,12 +103,31 @@
         <!-- Settings Modal -->
         <div id="settings-modal" class="modal hidden">
             <div class="modal-content">
-                <h2>⚙️ Settings</h2>
+                <h2>⚙️ Settings & Info</h2>
+                
+                <!-- App Info Section -->
+                <div class="info-section">
+                    <div class="info-item">
+                        <span class="info-label">🤖 AI Model:</span>
+                        <span class="info-value" id="model-name">Gemini 3.1 Flash Lite</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">📅 Version:</span>
+                        <span class="info-value" id="app-version">1.0.0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">🚀 Last Updated:</span>
+                        <span class="info-value" id="deploy-date">May 6, 2026</span>
+                    </div>
+                </div>
+
+                <!-- API Key Section -->
                 <div class="setting-item">
                     <label for="new-api-key">Google Gemini API Key</label>
                     <input type="password" id="new-api-key" placeholder="Enter new API key">
                     <button id="update-api-key" class="btn btn-primary">Update Key</button>
                 </div>
+                
                 <button id="close-modal" class="btn btn-secondary">Close</button>
             </div>
         </div>

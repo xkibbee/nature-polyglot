@@ -373,6 +373,8 @@ footer {
     max-width: 500px;
     width: 100%;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .modal-content h2 {
@@ -380,6 +382,40 @@ footer {
     margin-bottom: 20px;
 }
 
+/* App Info Section */
+.info-section {
+    background: var(--bg-color);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+.info-value {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Setting Item */
 .setting-item {
     margin-bottom: 20px;
 }
@@ -423,6 +459,12 @@ footer {
         width: 40px;
         height: 40px;
         font-size: 1.1rem;
+    }
+
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
     }
 }
 
