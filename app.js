@@ -42,9 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Initialize the app
 function initializeApp() {
-    // API key is hardcoded, so always show the app interface
-    showAppInterface();
-    loadHistory();
+    if (geminiAPI.hasApiKey()) {
+        showAppInterface();
+        loadHistory();
+    } else {
+        showApiSetup();
+    }
 }
 
 // Show API setup screen

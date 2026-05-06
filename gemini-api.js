@@ -2,15 +2,9 @@
 
 class GeminiAPI {
     constructor() {
-        // Hardcoded API key for immediate use
-        this.apiKey = 'AIzaSyBMo4rbVd13qiOtflqZTolpfUlOFfKQMGY';
+        this.apiKey = null;
         // Using gemini-2.5-flash model (latest version from Google AI Studio)
         this.apiEndpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
-        
-        // Auto-save the key to localStorage for consistency
-        if (this.apiKey) {
-            localStorage.setItem('gemini_api_key', this.apiKey);
-        }
     }
 
     // Set API key
@@ -22,7 +16,7 @@ class GeminiAPI {
     // Get API key from storage
     getApiKey() {
         if (!this.apiKey) {
-            this.apiKey = localStorage.getItem('gemini_api_key') || 'AIzaSyBMo4rbVd13qiOtflqZTolpfUlOFfKQMGY';
+            this.apiKey = localStorage.getItem('gemini_api_key');
         }
         return this.apiKey;
     }
@@ -47,7 +41,7 @@ class GeminiAPI {
         const prompt = this.buildPrompt(inputName, inputLanguage);
         
         try {
-            const response = await fetch(`${this.apiEndpoint}?key=${this.apiKey}`, {
+            const response = await fetch(`${this.apiEndpoint}?key=${this.getApiKey()}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
